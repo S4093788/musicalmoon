@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Sign in',
+  title: 'Log in',
   description: 'Sign in to your account',
 }
 
@@ -13,7 +13,7 @@ export default function SignInPage() {
         <div className="space-y-2 text-center">
           <h1 className="text-2xl font-semibold text-white">Sign in</h1>
           <p className="text-sm text-indigo-100/50">
-            Welcome back — enter your details below
+            MuscialMoon
           </p>
         </div>
 
