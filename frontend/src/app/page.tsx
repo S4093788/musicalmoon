@@ -2,54 +2,68 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Home',
-  description: 'Welcome to the app',
+  title: 'Sign in',
+  description: 'Sign in to your account',
 }
 
-export default function LandingPage() {
+export default function SignInPage() {
   return (
-    <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-[#0B0E1A] px-8">
-      {/* Ambient glow */}
-      <div className="pointer-events-none absolute left-1/2 top-1/3 h-[32rem] w-[32rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,_rgba(122,140,255,0.18)_0%,_transparent_70%)]" />
-      <div className="pointer-events-none absolute right-16 top-16 h-2 w-2 rounded-full bg-white/40" />
-      <div className="pointer-events-none absolute left-24 top-40 h-1 w-1 rounded-full bg-white/30" />
-      <div className="pointer-events-none absolute bottom-32 right-1/3 h-1.5 w-1.5 rounded-full bg-white/20" />
-
-      <div className="relative z-10 flex flex-col items-center gap-10 text-center">
-        <div className="space-y-5">
-          <p className="text-xs font-medium uppercase tracking-[0.3em] text-indigo-300/70">
-            {process.env.NEXT_PUBLIC_APP_NAME ?? 'App'}
-          </p>
-          <h1 className="text-5xl font-semibold tracking-tight text-white sm:text-6xl">
-            Where late nights
-            <br />
-            <span className="bg-gradient-to-r from-indigo-300 via-violet-200 to-indigo-300 bg-clip-text text-transparent">
-              find their sound
-            </span>
-          </h1>
-          <p className="mx-auto max-w-sm text-base leading-relaxed text-indigo-100/50">
-            Your app description goes here. Edit{' '}
-            <code className="rounded bg-white/5 px-1.5 py-0.5 font-mono text-[13px] text-indigo-200/80">
-              src/app/page.tsx
-            </code>{' '}
-            to get started.
+    <main className="flex min-h-screen items-center justify-center bg-[#0B0E1A] px-6">
+      <div className="w-full max-w-sm space-y-8">
+        <div className="space-y-2 text-center">
+          <h1 className="text-2xl font-semibold text-white">Sign in</h1>
+          <p className="text-sm text-indigo-100/50">
+            Welcome back — enter your details below
           </p>
         </div>
 
-        <div className="flex gap-3">
-          <Link
-            href="/auth/signup"
-            className="inline-flex items-center justify-center rounded-full bg-white px-7 py-3 text-sm font-medium text-[#0B0E1A] shadow-[0_0_24px_rgba(255,255,255,0.15)] transition-all hover:shadow-[0_0_32px_rgba(255,255,255,0.25)]"
-          >
-            Create account
-          </Link>
-          <Link
-            href="/auth/signin"
-            className="inline-flex items-center justify-center rounded-full border border-white/15 px-7 py-3 text-sm font-medium text-white/90 transition-colors hover:border-white/30 hover:bg-white/5"
+        <form className="space-y-5">
+          <div className="space-y-1.5">
+            <label htmlFor="email" className="text-sm text-indigo-100/70">
+              Email
+            </label>
+            <input
+              id="email"
+              type="email"
+              placeholder="you@example.com"
+              className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-white/30 outline-none focus:border-indigo-300/50 focus:bg-white/[0.07]"
+            />
+          </div>
+
+          <div className="space-y-1.5">
+            <div className="flex items-center justify-between">
+              <label htmlFor="password" className="text-sm text-indigo-100/70">
+                Password
+              </label>
+              <Link
+                href="/auth/forgot-password"
+                className="text-xs text-indigo-300/70 hover:text-indigo-300"
+              >
+                Forgot password?
+              </Link>
+            </div>
+            <input
+              id="password"
+              type="password"
+              placeholder="••••••••"
+              className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-white/30 outline-none focus:border-indigo-300/50 focus:bg-white/[0.07]"
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="w-full rounded-full bg-white py-2.5 text-sm font-medium text-[#0B0E1A] transition-all hover:shadow-[0_0_20px_rgba(255,255,255,0.2)]"
           >
             Sign in
+          </button>
+        </form>
+
+        <p className="text-center text-sm text-indigo-100/50">
+          Not a member?{' '}
+          <Link href="/auth/signup" className="text-indigo-300 hover:text-indigo-200">
+            Create account
           </Link>
-        </div>
+        </p>
       </div>
     </main>
   )
